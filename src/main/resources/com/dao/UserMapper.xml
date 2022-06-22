@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--这个文件叫映射文件-->
+<!--约束-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径名-->
+<mapper namespace="com.dao.UserMapper">
+    <!-- 增删改查-->
+<!--    int insertUser(@Param("id")Integer id,@Param("username")String username,@Param("password")String password,@Param("email")String email);-->
+    <insert id="insertUser" >
+        insert  into user values(#{id},#{username},#{password},#{email})
+    </insert>
+<!--    int selectUserByUsernameAndPassword(User user);-->
+    <select id="selectUserByUsernameAndPassword" resultType="int">
+        select count(*) from user where username=#{username} and password=#{password}
+    </select>
+<!--    int selectUserByUsernamae(@Param("username")String username);-->
+    <select id="selectUserByUsername" resultType="int">
+        select count(*) from user where username=#{username}
+    </select>
+<!--    User selectUser(@Param("id") Integer id);-->
+    <select id="selectUser" resultType="User">
+        select *from user where id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--这个文件叫映射文件-->
+<!--约束-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径名-->
+<mapper namespace="com.dao.PhoneMapper">
+<!--    int select(@Param("phone")String phone);-->
+    <select id="select" resultType="int">
+        select count(*) from phone where phonenumber=#{phone}
+    </select>
+<!--    int insertPhone(@Param("addPhone")String addPhone);-->
+    <insert id="insertPhone">
+        insert  into phone values(null,#{addPhone})
+    </insert>
+
+<!--    int deletePhonelastOne();-->
+    <delete id="deletePhonelastOne" >
+        delete from phone order by   id desc limit 1
+    </delete>
+<!--  int  selectGetLastId()-->
+    <select id="selectGetLastId" resultType="int">
+        select id from phone order by  id desc limit 1
+    </select>
+<!--    int selectIdByPhone(@Param("phone")String phone);-->
+    <select id="selectIdByPhone" resultType="Integer">
+        select id from phone where phonenumber=#{phone}
+    </select>
+</mapper>

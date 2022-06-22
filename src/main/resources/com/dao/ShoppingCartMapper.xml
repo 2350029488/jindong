@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--这个文件叫映射文件-->
+<!--约束-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径名-->
+<mapper namespace="com.dao.ShoppingCartMapper">
+<!--        int insertOrder(Order order);-->
+<insert id="insertOrder">
+    insert into shoppingcart values(#{id},#{commodity},#{univalent},#{amount},#{userid},#{photo})
+</insert>
+
+<!--    List<ShoppingCart> selectAll();-->
+    <select id="selectAll" resultType="ShoppingCart">
+        select *from shoppingCart
+    </select>
+
+<!--    int updateNumById(@Param("id")Integer id,@Param("num")Integer num);-->
+    <update id="updateNumById">
+        update shoppingcart set  amount=#{num} where id=#{id}
+    </update>
+<!--    int deleteById(@Param("id")Integer id);-->
+    <delete id="deleteById">
+        delete from shoppingcart where id=#{id}
+    </delete>
+<!--    int selectAmounts();-->
+    <select id="selectAmounts" resultType="int">
+        select count(*) from shoppingcart;
+    </select>
+    <select id="">
+
+    </select>
+
+<!--    int  selectsById(@Param("ids")String ids);-->
+    <delete id="selectsById">
+        delete  from shoppingcart where id in (${ids})
+    </delete>
+</mapper>
